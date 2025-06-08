@@ -8,7 +8,6 @@ const modalImg = document.getElementById("modal-image");
 const modalHeading = document.getElementById("modal-heading");
 const modalDesc = document.getElementById("modal-desc");
 const searchInput = document.getElementById("search-input");
-const searchBtn = document.getElementById("search-btn");
 
 /* Fetches and returns all recipes found */
 async function getAllRecipes() {
@@ -50,11 +49,11 @@ async function getSelectedRecipe(id) {
     }
 }
 
-async function searchRecipe(name) {
+async function searchRecipe(recipeName) {
     loaderContainer.hidden = false;
 
     try {
-        const res = await fetch(searchURL + name);
+        const res = await fetch(searchURL + recipeName);
         if (!res.ok) {
             throw new Error("Data Fetching Error");
         }
@@ -115,6 +114,22 @@ async function searchRecipe(name) {
     }
 }
 
+function debounce(callback, delay) {
+    let timeoutId = "";
+
+    return function (recipeName) {
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+
+        timeoutId = setTimeout(() => {
+            callback(recipeName);
+        }, delay);
+    };
+}
+
+const debounceFunc = debounce(searchRecipe, 1000);
+
 getAllRecipes().then((data) => {
     let htmlContent = "";
 
@@ -164,9 +179,9 @@ document.getElementById("close-btn").onclick = function () {
     modalContainer.hidden = true;
 };
 
-searchBtn.onclick = function () {
-    searchRecipe(searchInput.value);
-};
+searchInput.addEventListener("input", function (e) {
+    debounceFunc(e.target.value);
+});
 
 /* Toggles Scroll button */
 document.addEventListener("scroll", function () {
