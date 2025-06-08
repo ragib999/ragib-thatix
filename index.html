@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Thatix</title>
+
+        <!-- Favicon -->
+        <link
+            rel="shortcut icon"
+            href="./Assets/Images/favicon.png"
+            type="image/x-icon"
+        />
+
+        <!-- Fontawesome -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+            integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <!-- CSS File -->
+        <link rel="stylesheet" href="./css/output.css" />
+
+        <!-- Main JS File -->
+        <script type="module" src="app.js" defer></script>
+    </head>
+    <body class="relative">
+        <!-- Main Website Start -->
+        <div>
+            <header class="flex justify-center py-5">
+                <img
+                    id="home"
+                    class="w-30"
+                    src="./Assets/Images/logo.png"
+                    alt="website logo"
+                />
+            </header>
+
+            <!-- Page Title Start -->
+            <section
+                class="bg-[url('../Assets/Images/page-title.jpg')] bg-center bg-no-repeat bg-cover h-[350px] w-full"
+            >
+                <div class="grid place-items-center size-full backdrop-blur-xs">
+                    <!-- Title Container Start -->
+                    <div class="max-w-[400px]">
+                        <h1 class="text-5xl font-bold text-white text-center">
+                            Search Your Favorite Recipe
+                        </h1>
+                        <p class="text-center text-white mt-5">
+                            A handful of simple ingredients typify the fresh,
+                            vibrant flavors of Greek cooking
+                        </p>
+                    </div>
+                    <!-- Title Container End -->
+                </div>
+            </section>
+            <!-- Page Title End -->
+
+            <!-- Main Section Start -->
+            <main class="mt-5">
+                <!-- Searchbar Container Start -->
+                <div class="flex justify-center items-center px-5">
+                    <input
+                        id="search-input"
+                        class="w-[900px] h-[40px] border-1 border-[#d9d9d9] focus:outline-1 focus:outline-[#979797] rounded-l-lg pl-5"
+                        type="input"
+                        placeholder="Search..."
+                    />
+                    <button
+                        class="bg-[#fbbd23] hover:bg-[#e1a205] rounded-r-lg cursor-pointer"
+                        id="search-btn"
+                    >
+                        <i
+                            class="fa-solid fa-magnifying-glass text-white py-3 px-4"
+                        ></i>
+                    </button>
+                </div>
+                <!-- Searchbar Container End -->
+
+                <h2 class="text-5xl text-center mt-8">Latest Recipes</h2>
+                <!-- Loading Screen Container -->
+                <div
+                    id="loader-container"
+                    hidden="true"
+                    class="grid place-items-center w-full h-[300px]"
+                >
+                    <div class="loader"></div>
+                </div>
+
+                <!-- Main content grid Start -->
+                <div
+                    id="recipes-container"
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 w-auto min-[400px]:w-[350px] md:w-[700px] lg:w-[1000px] 2xl:w-[1500px] mt-4 px-3 min-[400px]:px-0 mx-auto"
+                ></div>
+                <!-- Main content grid End -->
+
+                <!-- Scroll up button -->
+                <button
+                    id="scroll-btn"
+                    hidden="true"
+                    class="fixed right-5 bottom-15"
+                >
+                    <a
+                        href="#home"
+                        class="px-3 py-2 bg-[#fbbd23] hover:bg-[#e1a205]"
+                        ><i class="fa-solid fa-arrow-up text-white"></i
+                    ></a>
+                </button>
+
+                <!-- Footer Start -->
+                <footer class="bg-[#3d4451] text-white py-3 mt-5">
+                    <div
+                        class="flex flex-col min-[410px]:flex-row items-center justify-between w-auto 2xl:w-[1500px] px-5 mx-auto"
+                    >
+                        <p class="text-center min-[410px]:text-left">
+                            Copyright &copy; 2023 - All rights reserved
+                        </p>
+                        <div class="flex items-center gap-2">
+                            <a href="https://www.x.com" target="_blank"
+                                ><i class="fa-brands fa-twitter text-lg"></i
+                            ></a>
+                            <a href="https://www.youtube.com" target="_blank"
+                                ><i class="fa-brands fa-youtube text-lg"></i
+                            ></a>
+                            <a href="https://www.facebook.com" target="_blank"
+                                ><i class="fa-brands fa-facebook-f text-lg"></i
+                            ></a>
+                        </div>
+                    </div>
+                </footer>
+                <!-- Footer End -->
+            </main>
+            <!-- Main Section End -->
+        </div>
+        <!-- Main Website End -->
+
+        <!-- Modal Start -->
+        <section
+            id="modal-container"
+            hidden
+            class="grid place-items-center fixed top-0 left-0 size-full bg-[#0000008a]"
+        >
+            <div
+                class="w-[90%] min-[450px]:w-[80%] lg:w-[50%] h-[600px] min-[450px]:h-[800px] bg-white rounded-2xl p-5"
+            >
+                <div class="flex flex-col justify-between h-full">
+                    <!-- Modal Content -->
+                    <div
+                        class="grid grid-rows-2 w-full h-[500px] min-[450px]:h-[680px] shadow-lg rounded-2xl"
+                    >
+                        <!-- Modal Image -->
+                        <div class="size-full rounded-t-2xl overflow-hidden">
+                            <img
+                                id="modal-image"
+                                class="size-full object-cover"
+                                src="https://img.freepik.com/free-vector/hand-drawn-no-data-illustration_23-2150570252.jpg"
+                                alt="Food image"
+                            />
+                        </div>
+                        <!-- Modal Text -->
+                        <div class="size-full px-3 py-2 rounded-b-2xl">
+                            <h4
+                                id="modal-heading"
+                                class="text-lg font-bold mb-2"
+                            ></h4>
+                            <p
+                                id="modal-desc"
+                                class="h-[190px] min-[450px]:h-[285px] overflow-x-hidden overflow-y-auto"
+                            ></p>
+                        </div>
+                    </div>
+
+                    <!-- Close Button -->
+                    <button
+                        id="close-btn"
+                        class="self-end bg-[#fbbd23] hover:bg-[#e1a205] text-white rounded-lg cursor-pointer px-3 py-2"
+                    >
+                        Close
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- Modal End -->
+    </body>
+</html>
