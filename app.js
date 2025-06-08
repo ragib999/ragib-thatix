@@ -49,6 +49,7 @@ async function getSelectedRecipe(id) {
     }
 }
 
+/* Displays searched recipes */
 async function searchRecipe(recipeName) {
     loaderContainer.hidden = false;
 
@@ -130,6 +131,7 @@ function debounce(callback, delay) {
 
 const debounceFunc = debounce(searchRecipe, 1000);
 
+/* Initial rendering of all recipies */
 getAllRecipes().then((data) => {
     let htmlContent = "";
 
@@ -179,6 +181,7 @@ document.getElementById("close-btn").onclick = function () {
     modalContainer.hidden = true;
 };
 
+/* Captures user search prompt and calls debounce Function */
 searchInput.addEventListener("input", function (e) {
     debounceFunc(e.target.value);
 });
