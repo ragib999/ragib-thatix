@@ -181,6 +181,11 @@ document.getElementById("close-btn").onclick = function () {
     modalContainer.hidden = true;
 };
 
+/* Alternate exit from modal container */
+modalContainer.addEventListener('click', function () {
+    modalContainer.hidden = true
+})
+
 /* Captures user search prompt and calls debounce Function */
 searchInput.addEventListener("input", function (e) {
     debounceFunc(e.target.value);
@@ -194,3 +199,14 @@ document.addEventListener("scroll", function () {
         scrollBtn.hidden = true;
     }
 });
+
+/* Alternate way of exiting Modal Container */
+document.addEventListener('keydown', function (e) {
+    if(e.key == 'Escape') {
+        if(modalContainer.hidden) {
+            return
+        }
+
+        modalContainer.hidden = true
+    }
+})
